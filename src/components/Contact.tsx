@@ -22,6 +22,8 @@ export function Contact() {
       <h2 className="text-2xl font-semibold text-white">Contact</h2>
       <div className="grid gap-6 md:grid-cols-3">
         {contacts.map((contact) => {
+          const shouldOpenNewTab = contact.url.startsWith("http");
+
           return (
             <div
               key={contact.label}
@@ -30,7 +32,13 @@ export function Contact() {
               <p className="text-md uppercase tracking-[0.28em] text-slate-400">
                 {contact.label}
               </p>
-              <a href={contact.url} target="_blank" className="text-lg">
+              <a
+                href={contact.url}
+                className="text-lg"
+                {...(shouldOpenNewTab
+                  ? { target: "_blank", rel: "noreferrer" }
+                  : {})}
+              >
                 {contact.value}
               </a>
             </div>
