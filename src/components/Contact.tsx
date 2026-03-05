@@ -18,7 +18,7 @@ const contacts = [
 
 export function Contact() {
   return (
-    <div id="contact" className="space-y-8 pb-4">
+    <div className="space-y-8 pb-4">
       <h2 className="text-2xl font-semibold text-white">Contact</h2>
       <div className="grid gap-6 md:grid-cols-3">
         {contacts.map((contact) => {

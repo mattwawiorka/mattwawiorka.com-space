@@ -27,6 +27,8 @@ export function NavBar() {
       .map((item) => document.getElementById(item.id))
       .filter((el): el is HTMLElement => el !== null);
 
+    const scroller = document.querySelector("#scrollContainer");
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -38,8 +40,9 @@ export function NavBar() {
         }
       },
       {
-        threshold: [0.2, 0.4, 0.6],
-        rootMargin: "-120px 0px -55% 0px",
+        threshold: [0, 0.25, 0.5],
+        rootMargin: "-20% 0px -60% 0px",
+        root: scroller,
       },
     );
 

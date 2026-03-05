@@ -2,7 +2,7 @@ import mattPhoto from "../assets/profilepic.jpg";
 
 export function About() {
   return (
-    <div id="home" className="flex flex-col justify-evenly md:flex-row gap-6">
+    <div className="flex flex-col justify-evenly md:flex-row gap-6">
       <div className="flex items-center justify-center md:shrink-0">
         <div className="h-90 w-90 rounded-full bg-linear-to-br from-indigo-400/60 via-slate-500/30 to-slate-900/80 p-1">
           <div className="flex h-full w-full items-center justify-center rounded-full bg-[radial-gradient(circle_at_30%_25%,#a5b4fc_0%,#6b9be0_40%,#1f2937_80%)]">
