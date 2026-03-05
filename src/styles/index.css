@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+/* Global CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tokens */
+:root {
+  --screen-bg: #0c0e12;
+  --content-bg: #1b1c1f;
+  --fg: #e5e7eb;
+
+  --section-min-h: calc(100svh-18rem);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-min-h: calc(100svh-20rem);
+  }
+}
+
+body {
+  background: radial-gradient(circle at top, #151824, #0c0e12 55%);
+  color: var(--fg);
+}
+
+/* Space Effect */
+
+.space-shell {
+  isolation: isolate;
+  background:
+    radial-gradient(
+      circle at 14% -12%,
+      rgba(72, 169, 210, 0.23),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 82% -8%,
+      rgba(250, 188, 112, 0.14),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at 52% 120%,
+      rgba(37, 108, 135, 0.24),
+      transparent 54%
+    ),
+    linear-gradient(180deg, #05060a 0%, #080b12 52%, #0b0d15 100%);
+}
+
+.space-shell::before,
+.space-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+
+.space-shell::before {
+  opacity: 0.84;
+  background-image:
+    radial-gradient(
+      2.4px 2.4px at 22px 34px,
+      rgba(255, 251, 235, 0.98),
+      transparent 66%
+    ),
+    radial-gradient(
+      2px 2px at 78px 66px,
+      rgba(255, 255, 255, 0.9),
+      transparent 66%
+    ),
+    radial-gradient(
+      2.2px 2.2px at 120px 20px,
+      rgba(255, 242, 214, 0.85),
+      transparent 66%
+    ),
+    radial-gradient(
+      2.8px 2.8px at 160px 92px,
+      rgba(190, 230, 255, 0.95),
+      transparent 66%
+    ),
+    radial-gradient(
+      1.9px 1.9px at 210px 44px,
+      rgba(255, 255, 255, 0.88),
+      transparent 66%
+    ),
+    radial-gradient(
+      2.6px 2.6px at 260px 78px,
+      rgba(198, 233, 255, 0.95),
+      transparent 66%
+    );
+  background-size:
+    320px 210px,
+    370px 250px,
+    420px 250px,
+    500px 290px,
+    350px 240px,
+    460px 300px;
+  animation:
+    stars-twinkle 5.5s ease-in-out infinite alternate,
+    stars-float 34s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+
+.space-shell::after {
+  opacity: 0.42;
+  background-image:
+    radial-gradient(
+      4px 4px at 40px 80px,
+      rgba(255, 249, 232, 0.98),
+      transparent 68%
+    ),
+    radial-gradient(
+      3.4px 3.4px at 200px 40px,
+      rgba(255, 255, 255, 0.92),
+      transparent 68%
+    ),
+    radial-gradient(
+      4.2px 4.2px at 340px 120px,
+      rgba(188, 228, 255, 0.96),
+      transparent 68%
+    );
+  background-size:
+    620px 360px,
+    700px 420px,
+    780px 460px;
+  animation:
+    stars-drift 30s linear infinite alternate,
+    stars-glimmer 4s ease-in-out infinite;
+  mix-blend-mode: screen;
+  will-change: transform, filter;
+}
+
+.space-shell > * {
+  z-index: 1;
+}
+
+@keyframes stars-twinkle {
+  0% {
+    opacity: 0.58;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0.66;
+  }
+}
+
+@keyframes stars-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-42px, -200px, 0);
+  }
+}
+
+@keyframes stars-float {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(24px, -92px, 0);
+  }
+}
+
+@keyframes stars-glimmer {
+  0% {
+    filter: brightness(0.95) saturate(1);
+  }
+  50% {
+    filter: brightness(1.16) saturate(1.08);
+  }
+  100% {
+    filter: brightness(0.98) saturate(1.02);
+  }
+}
+
+/* A11y */
+:focus-visible {
+  outline: 2px solid rgba(99, 179, 237, 0.9);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

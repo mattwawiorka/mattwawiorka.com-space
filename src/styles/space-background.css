@@ -1,0 +1,33 @@
+.stars {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  animation: twinkle 5s infinite ease-in-out;
+}
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  box-shadow:
+    /* lots of random shadows for stars */
+    50px 100px #fff,
+    200px 150px #fff,
+    400px 200px #fff;
+  animation: move 50s linear infinite;
+}
+@keyframes move {
+  to {
+    transform: translateY(-2000px);
+  }
+}
+@keyframes twinkle {
+  50% {
+    opacity: 0.3;
+  }
+}
